@@ -1,13 +1,14 @@
 package com.chat.hechat;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.chat.hechat.chat.ChatActivity;
+import com.chat.hechat.login.DatabaseHelper;
+import com.chat.hechat.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent (MainActivity.this, ChatActivity.class);
+                startActivity(intent1);
+            }
+        });
+        findViewById(R.id.button_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent (MainActivity.this, LoginActivity.class);
                 startActivity(intent1);
             }
         });

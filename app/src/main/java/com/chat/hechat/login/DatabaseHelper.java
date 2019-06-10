@@ -1,4 +1,4 @@
-package com.chat.hechat;
+package com.chat.hechat.login;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
