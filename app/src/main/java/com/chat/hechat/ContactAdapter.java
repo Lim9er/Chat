@@ -14,6 +14,8 @@ import java.util.List;
 public class ContactAdapter extends ArrayAdapter<Contact> {
 
     private int avatarID;
+    private List<Contact> contactList;
+
     public ContactAdapter(Context context, int textViewResourceID, List<Contact> objects){
         super(context,textViewResourceID,objects);
         avatarID = textViewResourceID;

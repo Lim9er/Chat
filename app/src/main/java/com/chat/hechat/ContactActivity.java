@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,11 +28,21 @@ public class ContactActivity extends AppCompatActivity {
     private ListView listView;
     private List<Contact> contactList = new ArrayList<Contact>();
     private TextView textView;
+    private Button temp_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        temp_button = (Button)findViewById(R.id.temp_create);
+        temp_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ContactActivity.this,CreateContactActivity.class);
+                startActivity(intent);
+            }
+        });
         Toolbar myToolbar = (Toolbar)findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         dbHelper = new DatabaseHelper(this,"contacts.db",null,2);
@@ -67,7 +78,6 @@ public class ContactActivity extends AppCompatActivity {
                 //Send Complete
                 Intent intent = new Intent(ContactActivity.this,ContactDetailActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
@@ -76,6 +86,12 @@ public class ContactActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu,menu);
         return true;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.d("test","back from last app");
     }
 
 }
