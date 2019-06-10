@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.chat.hechat.login.DatabaseHelper;
+
 public class CreateContactActivity extends AppCompatActivity {
 
     private EditText text_id;

@@ -1,11 +1,14 @@
 package com.chat.hechat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -14,6 +17,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
+import android.support.v4.app.FragmentManager;
+
 
 
 import com.chat.hechat.login.DatabaseHelper;
@@ -29,6 +35,7 @@ public class ContactActivity extends AppCompatActivity {
     private List<Contact> contactList = new ArrayList<Contact>();
     private TextView textView;
     private Button temp_button;
+
 
 
     @Override
@@ -80,6 +87,32 @@ public class ContactActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Contact contact = contactList.get(position);
+                String delete_id = String.valueOf(contact.getId());
+
+                ButtonDialogFragment buttonDialogFragment = new ButtonDialogFragment();
+                buttonDialogFragment.show("警告", "真的要删除该用户吗？", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(ContactActivity.this, "点击了确定 " + which, Toast.LENGTH_SHORT).show();
+                    }
+                }, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(ContactActivity.this, "点击了取消 " + which, Toast.LENGTH_SHORT).show();
+                    }
+                }, getSupportFragmentManager());
+
+
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                db.delete("contact","id=?",new String[] {delete_id});
+                return false;
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -93,5 +126,7 @@ public class ContactActivity extends AppCompatActivity {
         super.onResume();
         Log.d("test","back from last app");
     }
+
+
 
 }
