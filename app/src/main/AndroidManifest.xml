@@ -27,7 +27,8 @@
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
 
         <activity android:name=".chat.ChatActivity"/>
-
+        <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".login.RegisterActivity"/>
     </application>
 
 </manifest>
