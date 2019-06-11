@@ -1,6 +1,7 @@
 package com.chat.hechat;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.chat.hechat.chat.ChatActivity;
 import com.chat.hechat.login.DatabaseHelper;
 
 public class ContactDetailActivity extends AppCompatActivity {
@@ -18,6 +20,7 @@ public class ContactDetailActivity extends AppCompatActivity {
     private EditText text_info;
     private EditText text_comment;
     private Button edit_button;
+    private Button chat_button;
     private DatabaseHelper dbHelper;
 
 
@@ -69,6 +72,16 @@ public class ContactDetailActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+            }
+        });
+
+        chat_button = (Button)findViewById(R.id.chat_button);
+        chat_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ContactDetailActivity.this, ChatActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
