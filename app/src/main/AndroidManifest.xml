@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@menu/menu" />
@@ -20,7 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactActivity" />
+        <activity
+            android:name=".ContactActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
         <activity
             android:name=".CreateContactActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />

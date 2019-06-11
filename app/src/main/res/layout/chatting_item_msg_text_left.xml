@@ -30,6 +30,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/wyj"
+
             android:focusable="false" />
 
         <TextView

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eeeeee"
-    tools:context="com.shixi3.loginActivity">
+    tools:context="com.chat.hechat.login.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/rl_loginactivity_top"
