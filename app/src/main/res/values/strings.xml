@@ -4,4 +4,7 @@
     <string name="comment"><b>备注</b></string>
     <string name="contact_name"><b>用户序号：</b></string>
     <string name="nickname">昵称</string>
+    <string name="add_friend">添加好友</string>
+    <string name="contact_filter">好友筛选</string>
+    <string name="dynamic">动态</string>
 </resources>

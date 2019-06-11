@@ -13,12 +13,43 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
 
-    <Button
-        android:id="@+id/temp_create"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:text="添加联系人（临时）" />
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/temp_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_marginLeft="2dp"
+            android:text="@string/add_friend"
+            style="?android:borderlessButtonStyle"
+            android:drawableTop="@drawable/ic_add_circle_black_24dp"
+            />
+
+        <Button
+            android:id="@+id/contact_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:text="@string/contact_filter"
+            style="?android:borderlessButtonStyle"
+            android:drawableTop="@drawable/ic_account_circle_black_24dp"/>
+
+        <Button
+            android:id="@+id/dynamic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:text="@string/dynamic"
+            style="?android:borderlessButtonStyle"
+            android:drawableTop="@drawable/ic_stars_black_48dp"
+            />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/list_view"

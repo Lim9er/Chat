@@ -23,6 +23,7 @@ public class CreateContactActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+        setTitle("添加好友");
         dbHelper = new DatabaseHelper(this,"contacts.db",null,2);
         text_id = (EditText)findViewById(R.id.real_name);
         text_nickname = (EditText)findViewById(R.id.real_nickname);

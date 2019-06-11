@@ -21,7 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ContactActivity" />
-        <activity android:name=".CreateContactActivity" />
+        <activity
+            android:name=".CreateContactActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
             android:name=".ContactDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>

@@ -63,7 +63,7 @@ public class ContactActivity extends AppCompatActivity {
                 String nickname = cursor.getString(cursor.getColumnIndex("nickname"));
                 String info = cursor.getString(cursor.getColumnIndex("info"));
                 String comment =  cursor.getString(cursor.getColumnIndex("comment"));
-                Contact contact = new Contact(id,nickname,comment,info,R.drawable.ic_person_black_48dp);
+                Contact contact = new Contact(id,nickname,comment,info,R.drawable.ic_account_circle_black_24dp);
                 contactList.add(contact);;
             }while(cursor.moveToNext());
         }
@@ -98,12 +98,12 @@ public class ContactActivity extends AppCompatActivity {
                 buttonDialogFragment.show("警告", "真的要删除该用户吗？", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ContactActivity.this, "点击了确定 " + which, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ContactActivity.this, "确定 " + which, Toast.LENGTH_SHORT).show();
                     }
                 }, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ContactActivity.this, "点击了取消 " + which, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ContactActivity.this, "取消 " + which, Toast.LENGTH_SHORT).show();
                     }
                 }, getSupportFragmentManager());
 
