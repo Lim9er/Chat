@@ -22,14 +22,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ContactActivity"
+            android:name=".contact.ContactActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
         <activity
-            android:name=".CreateContactActivity"
+            android:name=".contact.CreateContactActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
-            android:name=".ContactDetailActivity"
+            android:name=".contact.ContactDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
 
         <activity android:name=".chat.ChatActivity"/>

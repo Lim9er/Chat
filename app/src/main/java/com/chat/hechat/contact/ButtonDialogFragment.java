@@ -1,4 +1,4 @@
-package com.chat.hechat;
+package com.chat.hechat.contact;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

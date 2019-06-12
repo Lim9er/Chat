@@ -1,4 +1,4 @@
-package com.chat.hechat;
+package com.chat.hechat.contact;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.chat.hechat.R;
 import com.chat.hechat.login.DatabaseHelper;
 
 public class CreateContactActivity extends AppCompatActivity {

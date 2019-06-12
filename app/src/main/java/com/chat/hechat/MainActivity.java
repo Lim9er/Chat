@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.chat.hechat.chat.ChatActivity;
+import com.chat.hechat.contact.ContactActivity;
 import com.chat.hechat.login.DatabaseHelper;
 import com.chat.hechat.login.LoginActivity;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dbHelper.getWritableDatabase();
-                Intent intent = new Intent(MainActivity.this,ContactActivity.class);
+                Intent intent = new Intent(MainActivity.this, ContactActivity.class);
                 startActivity(intent);
             }
         });

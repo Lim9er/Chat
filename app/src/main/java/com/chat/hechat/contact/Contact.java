@@ -1,4 +1,4 @@
-package com.chat.hechat;
+package com.chat.hechat.contact;
 
 public class Contact {
 

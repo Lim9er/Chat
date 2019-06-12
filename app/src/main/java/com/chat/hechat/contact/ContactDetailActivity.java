@@ -1,4 +1,4 @@
-package com.chat.hechat;
+package com.chat.hechat.contact;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.chat.hechat.R;
 import com.chat.hechat.chat.ChatActivity;
 import com.chat.hechat.login.DatabaseHelper;
 
