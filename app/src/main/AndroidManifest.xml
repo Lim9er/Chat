@@ -15,11 +15,7 @@
             android:resource="@menu/menu" />
 
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".contact.ContactActivity"
@@ -31,9 +27,13 @@
         <activity
             android:name=".contact.ContactDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
-
         <activity android:name=".chat.ChatActivity"/>
-        <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".login.LoginActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".login.RegisterActivity"/>
     </application>
 

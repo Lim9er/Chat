@@ -7,26 +7,25 @@
 
 
     <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/contact_name"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-        />
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/contact_name"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/real_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/name"/>
+        app:layout_constraintTop_toBottomOf="@id/name" />
 
     <TextView
         android:id="@+id/info"
@@ -34,17 +33,17 @@
         android:layout_height="wrap_content"
         android:text="@string/info"
         app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/real_name"/>
+        app:layout_constraintTop_toBottomOf="@id/real_name" />
 
     <EditText
         android:id="@+id/real_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/info"/>
+        app:layout_constraintTop_toBottomOf="@id/info" />
 
     <TextView
         android:id="@+id/comment"
@@ -52,44 +51,46 @@
         android:layout_height="wrap_content"
         android:text="@string/comment"
         app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/real_info"/>
+        app:layout_constraintTop_toBottomOf="@id/real_info" />
 
     <EditText
         android:id="@+id/real_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:layout_marginRight="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:layout_marginBottom="8dp"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/comment"/>
+        app:layout_constraintTop_toBottomOf="@id/comment" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="@id/name"
         app:layout_constraintTop_toBottomOf="@id/real_comment"
-        >
-    <Button
-        android:id="@+id/edit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="编辑"
-        android:layout_weight="1.0"
-        />
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/chat_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="对话"
-        android:layout_weight="1.0"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="@color/colorIcon"
-        />
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:text="编辑" />
+
+        <Button
+            android:id="@+id/chat_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:backgroundTint="@color/colorIcon"
+            android:text="对话"
+            android:textColor="#FFFFFF" />
+
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

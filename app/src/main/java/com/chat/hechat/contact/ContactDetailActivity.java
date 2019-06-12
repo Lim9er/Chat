@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,8 +53,8 @@ public class ContactDetailActivity extends AppCompatActivity {
         edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                text_id.setEnabled(true);
-                text_info.setEnabled(true);
+                //text_info.setEnabled(true);
+                //INFO and ID shouldn't be editable
                 text_comment.setEnabled(true);
                 edit_button.setText("保存");
                 edit_button.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +67,8 @@ public class ContactDetailActivity extends AppCompatActivity {
 
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
                         ContentValues values = new ContentValues();
-                        values.put("id",new_id);
+                        int new_id_int = Integer.parseInt(new_id);
+                        values.put("id",new_id_int);
                         values.put("info",new_info);
                         values.put("comment",new_comment);
                         db.update("contact",values,"nickname=?",new String[] {nickname});
@@ -87,4 +89,6 @@ public class ContactDetailActivity extends AppCompatActivity {
         });
 
     }
+
+
 }

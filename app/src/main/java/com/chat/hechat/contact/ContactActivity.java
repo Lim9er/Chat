@@ -33,6 +33,7 @@ public class ContactActivity extends AppCompatActivity {
     private List<Contact> contactList = new ArrayList<Contact>();
     private TextView textView;
     private Button temp_button;
+    private Button dynamic_button;
 
 
 
@@ -40,6 +41,14 @@ public class ContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        dynamic_button = (Button)findViewById(R.id.dynamic);
+        dynamic_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
         temp_button = (Button)findViewById(R.id.temp_create);
         temp_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,13 +99,14 @@ public class ContactActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Contact contact = contactList.get(position);
-                String delete_id = String.valueOf(contact.getId());
+                final String delete_id = String.valueOf(contact.getId());
 
                 ButtonDialogFragment buttonDialogFragment = new ButtonDialogFragment();
                 buttonDialogFragment.show("警告", "真的要删除该用户吗？", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ContactActivity.this, "确定 " + which, Toast.LENGTH_SHORT).show();
+                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+                        db.delete("contact","id=?",new String[] {delete_id});
                     }
                 }, new DialogInterface.OnClickListener() {
                     @Override
@@ -104,11 +114,7 @@ public class ContactActivity extends AppCompatActivity {
                         Toast.makeText(ContactActivity.this, "取消 " + which, Toast.LENGTH_SHORT).show();
                     }
                 }, getSupportFragmentManager());
-
-
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.delete("contact","id=?",new String[] {delete_id});
-                return false;
+                return true;
             }
         });
     }
@@ -121,10 +127,14 @@ public class ContactActivity extends AppCompatActivity {
 
     @Override
     public void onResume(){
+        //TODO:Refresh the ListView.
         super.onResume();
-        Log.d("test","back from last app");
+        Log.d("Warning","The listview should be refreshed");
+        listView = (ListView)findViewById(R.id.list_view);
+        ContactAdapter adapter = new ContactAdapter(ContactActivity.this,R.layout.mixed_list,contactList);
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        listView.invalidateViews();
     }
-
-
 
 }
