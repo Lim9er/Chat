@@ -127,7 +127,6 @@ public class ContactActivity extends AppCompatActivity {
 
     @Override
     public void onResume(){
-        //TODO:Refresh the ListView.
         super.onResume();
         Log.d("Warning","The listview should be refreshed");
         listView = (ListView)findViewById(R.id.list_view);

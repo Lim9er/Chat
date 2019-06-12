@@ -100,7 +100,6 @@
         android:text="登录"
         android:textColor="#fff"
         android:gravity="center"
-        android:onClick="onClick"
         />
 
     <TextView

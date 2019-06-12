@@ -29,12 +29,17 @@
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
         <activity android:name=".chat.ChatActivity"/>
         <activity android:name=".login.LoginActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".login.RegisterActivity"/>
+        <activity
+            android:name=".ChatMainActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
     </application>
 
 </manifest>
