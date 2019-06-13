@@ -21,6 +21,7 @@ public class ChatMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainchat);
+
         chatFragment = new ChatFragment();
         contactFragment =new ContactFragment();
         transaction = getFragmentManager().beginTransaction();
@@ -30,10 +31,8 @@ public class ChatMainActivity extends AppCompatActivity {
         transaction.show(chatFragment);
         transaction.commit();
 
-        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
-
-        //bottomNavigationView Item 选择监听
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+                = new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Log.d("123", "onNavigationItemSelected is click: ");
@@ -41,17 +40,19 @@ public class ChatMainActivity extends AppCompatActivity {
                 hideAllFragment(transaction);
                 switch (item.getItemId()){
                     case R.id.navigation_home:
-                        transaction.show(chatFragment);
-                            break;
+                        transaction.show(chatFragment).commit();
+                        return true;
+
                     case R.id.navigation_dashboard:
-                        transaction.show(contactFragment);
-                        break;
+                        transaction.show(contactFragment).commit();
+                        return true;
                 }
                 transaction.commit();
-
                 return false;
             }
-        });
+        };
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     //隐藏所有Fragment

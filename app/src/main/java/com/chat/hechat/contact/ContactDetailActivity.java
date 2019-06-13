@@ -28,12 +28,12 @@ public class ContactDetailActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        //Toolbar myToolbar = (Toolbar)findViewById(R.id.my_toolbar);
         text_id = findViewById(R.id.real_name);
         text_info = findViewById(R.id.real_info);
         text_comment = findViewById(R.id.real_comment);
         dbHelper = new DatabaseHelper(this);
-        setSupportActionBar(myToolbar);
+        //setSupportActionBar(myToolbar);
 
         //Getting information from ContactFragment.java
         SharedPreferences pref = getSharedPreferences("contact",MODE_PRIVATE);
