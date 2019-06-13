@@ -1,8 +1,13 @@
 package com.chat.hechat.chat;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -14,31 +19,34 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatFragment extends Fragment {
     private Button sendButton;
     private EditText editText;
     private ListView messageList;
     private ChatMsgViewAdapter msgAdapter;
     private List<ChatMsgEntity> mDataArrays = new ArrayList<>();
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
-        initView();
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.activity_chat,container,false);
+        initView(view);
         initData();
         messageList.setSelection(msgAdapter.getCount() - 1);
+        return view;
     }
 
-    public void initView() {
-        messageList = findViewById(R.id.list_chatmessage);
-        sendButton = findViewById(R.id.button_send);
+
+    public void initView(View v) {
+        messageList = v.findViewById(R.id.list_chatmessage);
+        sendButton = v.findViewById(R.id.button_send);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 send();
             }
         });
-        editText = findViewById(R.id.text_message);
+        editText = v.findViewById(R.id.text_message);
     }
 
     private String[] msgArray = new String[] { "你好吗", "我很好", "那就好", "好吧", };
@@ -64,7 +72,7 @@ public class ChatActivity extends AppCompatActivity {
             mDataArrays.add(entity);
         }
 
-        msgAdapter = new ChatMsgViewAdapter(this, mDataArrays);
+        msgAdapter = new ChatMsgViewAdapter(this.getContext(), mDataArrays);
         messageList.setAdapter(msgAdapter);
     }
 

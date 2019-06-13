@@ -25,7 +25,7 @@ public class CreateContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
         setTitle("添加好友");
-        dbHelper = new DatabaseHelper(this,"contacts.db",null,2);
+        dbHelper = new DatabaseHelper(this);
         text_id = (EditText)findViewById(R.id.real_name);
         text_nickname = (EditText)findViewById(R.id.real_nickname);
         text_info = (EditText)findViewById(R.id.real_info);
