@@ -42,8 +42,7 @@ public class ChatMainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.navigation_home:
                             transaction.show(chatFragment);
-
-                        break;
+                            break;
                     case R.id.navigation_dashboard:
                         transaction.show(contactFragment);
                         break;

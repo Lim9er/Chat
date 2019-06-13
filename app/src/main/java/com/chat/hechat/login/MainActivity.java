@@ -14,11 +14,14 @@ import com.chat.hechat.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        dbHelper = new DatabaseHelper(this,"contacts.db",null,2);
+        dbHelper.getWritableDatabase();
         findViews();
     }
     private EditText username;
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 boolean flag = uService.login(name, pass);
 
                 if (flag) {
+
                     Log.i("TAG", "登录成功");
                     Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this, ChatMainActivity.class);
