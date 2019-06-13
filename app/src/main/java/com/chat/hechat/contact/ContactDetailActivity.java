@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.chat.hechat.ChatMainActivity;
 import com.chat.hechat.R;
 import com.chat.hechat.chat.ChatFragment;
 import com.chat.hechat.login.DatabaseHelper;
@@ -81,7 +82,7 @@ public class ContactDetailActivity extends AppCompatActivity {
         chat_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ContactDetailActivity.this, ChatFragment.class);
+                Intent intent = new Intent(ContactDetailActivity.this, ChatMainActivity.class);
                 startActivity(intent);
                 finish();
             }
