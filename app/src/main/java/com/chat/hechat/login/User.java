@@ -1,20 +1,34 @@
 package com.chat.hechat.login;
-
+import java.io.Serializable;
 /**
  * Created by Administrator on 2019/6/3.
  */
-public class User {
-    private String name;            //用户名
-    private String password;        //密码
-    public User(String name, String password) {
-        this.name = name;
+public class User implements Serializable{
+    private int id;
+    private String username;
+    private String password;
+    private int age;
+    private String sex;
+    public User() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    public User(String username, String password) {
+        super();
+        this.username = username;
         this.password = password;
     }
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
     public String getPassword() {
         return password;
@@ -22,11 +36,22 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public String getSex() {
+        return sex;
+    }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "User [id=" + id + ", username=" + username + ", password="
+                + password + ", age=" + age + ", sex=" + sex + "]";
     }
+
 }

@@ -14,11 +14,8 @@
             android:name="com.google.android.actions"
             android:resource="@menu/menu" />
 
-        <activity android:name=".MainActivity">
-
-        </activity>
         <activity
-            android:name=".contact.ContactActivity"
+            android:name=".contact.ContactFragment"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
         <activity
@@ -27,14 +24,15 @@
         <activity
             android:name=".contact.ContactDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
-        <activity android:name=".chat.ChatActivity"/>
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".chat.ChatFragment"/>
+        <activity android:name=".login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".login.RegisterActivity"/>
+
         <activity
             android:name=".ChatMainActivity"
             android:theme="@style/AppTheme">

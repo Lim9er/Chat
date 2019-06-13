@@ -7,13 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.chat.hechat.R;
-import com.chat.hechat.chat.ChatActivity;
+import com.chat.hechat.chat.ChatFragment;
 import com.chat.hechat.login.DatabaseHelper;
 
 public class ContactDetailActivity extends AppCompatActivity {
@@ -33,10 +32,10 @@ public class ContactDetailActivity extends AppCompatActivity {
         text_id = findViewById(R.id.real_name);
         text_info = findViewById(R.id.real_info);
         text_comment = findViewById(R.id.real_comment);
-        dbHelper = new DatabaseHelper(this,"contacts.db",null,2);
+        dbHelper = new DatabaseHelper(this);
         setSupportActionBar(myToolbar);
 
-        //Getting information from ContactActivity.java
+        //Getting information from ContactFragment.java
         SharedPreferences pref = getSharedPreferences("contact",MODE_PRIVATE);
         int id = pref.getInt("id",0);
         String nickname = pref.getString("nickname","");
@@ -82,7 +81,7 @@ public class ContactDetailActivity extends AppCompatActivity {
         chat_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ContactDetailActivity.this, ChatActivity.class);
+                Intent intent = new Intent(ContactDetailActivity.this, ChatFragment.class);
                 startActivity(intent);
                 finish();
             }

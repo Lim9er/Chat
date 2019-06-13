@@ -1,21 +1,23 @@
 package com.chat.hechat.contact;
 
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 
@@ -25,7 +27,9 @@ import com.chat.hechat.login.DatabaseHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactActivity extends AppCompatActivity {
+import static android.content.Context.MODE_PRIVATE;
+
+public class ContactFragment extends Fragment {
 
     private DatabaseHelper dbHelper;
     private Contact contact;
@@ -34,32 +38,30 @@ public class ContactActivity extends AppCompatActivity {
     private TextView textView;
     private Button temp_button;
     private Button dynamic_button;
+    private View v;
 
-
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
-        dynamic_button = (Button)findViewById(R.id.dynamic);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        v =inflater.inflate(R.layout.activity_list,container,false);
+
+        dynamic_button = (Button)v.findViewById(R.id.dynamic);
         dynamic_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                startActivity(getIntent());
+                getActivity().finish();
+                startActivity(getActivity().getIntent());
             }
         });
-        temp_button = (Button)findViewById(R.id.temp_create);
+        temp_button = (Button)v.findViewById(R.id.temp_create);
         temp_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ContactActivity.this,CreateContactActivity.class);
+                Intent intent = new Intent(getActivity(),CreateContactActivity.class);
                 startActivity(intent);
             }
         });
-        Toolbar myToolbar = (Toolbar)findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
-        dbHelper = new DatabaseHelper(this,"contacts.db",null,2);
+        dbHelper = new DatabaseHelper(this.getContext());
         //initContacts();
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -75,22 +77,22 @@ public class ContactActivity extends AppCompatActivity {
             }while(cursor.moveToNext());
         }
 
-        ContactAdapter adapter = new ContactAdapter(ContactActivity.this,R.layout.mixed_list,contactList);
-        listView = (ListView)findViewById(R.id.list_view);
+        ContactAdapter adapter = new ContactAdapter(ContactFragment.this.getContext(),R.layout.mixed_list,contactList);
+        listView = (ListView)v.findViewById(R.id.list_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Contact contact = contactList.get(position);
                 //Sending clicked item to next activity
-                SharedPreferences.Editor editor = getSharedPreferences("contact",MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getContext().getSharedPreferences("contact",MODE_PRIVATE).edit();
                 editor.putInt("id",contact.getId());
                 editor.putString("nickname",contact.getNickname());
                 editor.putString("info",contact.getInfo());
                 editor.putString("comment",contact.getComment());
                 editor.commit();
                 //Send Complete
-                Intent intent = new Intent(ContactActivity.this,ContactDetailActivity.class);
+                Intent intent = new Intent(getActivity(),ContactDetailActivity.class);
                 startActivity(intent);
             }
         });
@@ -111,26 +113,22 @@ public class ContactActivity extends AppCompatActivity {
                 }, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ContactActivity.this, "取消 " + which, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "取消 " + which, Toast.LENGTH_SHORT).show();
                     }
-                }, getSupportFragmentManager());
+                }, ((AppCompatActivity) getActivity()).getSupportFragmentManager());
                 return true;
             }
         });
+        return v;
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu,menu);
-        return true;
-    }
 
     @Override
     public void onResume(){
         super.onResume();
         Log.d("Warning","The listview should be refreshed");
-        listView = (ListView)findViewById(R.id.list_view);
-        ContactAdapter adapter = new ContactAdapter(ContactActivity.this,R.layout.mixed_list,contactList);
+        listView = (ListView)v.findViewById(R.id.list_view);
+        ContactAdapter adapter = new ContactAdapter(getActivity(),R.layout.mixed_list,contactList);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         listView.invalidateViews();
