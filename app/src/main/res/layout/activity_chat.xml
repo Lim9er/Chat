@@ -8,7 +8,7 @@
     <ListView
         android:id="@+id/list_chatmessage"
         android:layout_width="wrap_content"
-        android:layout_height="599dp"
+        android:layout_height="544dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:divider="@color/cardview_light_background">

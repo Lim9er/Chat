@@ -22,11 +22,11 @@ public class ChatMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainchat);
         chatFragment = new ChatFragment();
-        contactFragment =new ContactFragment();
+        //contactFragment =new ContactFragment();
         transaction = getFragmentManager().beginTransaction();
         hideAllFragment(transaction);
         transaction.add(R.id.layout_frame,chatFragment);
-        transaction.add(R.id.layout_frame,contactFragment);
+        //transaction.add(R.id.layout_frame,contactFragment);
         transaction.show(chatFragment);
         transaction.commit();
 
