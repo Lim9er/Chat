@@ -122,16 +122,4 @@ public class ContactFragment extends Fragment {
         return v;
     }
 
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        Log.d("Warning","The listview should be refreshed");
-        listView = (ListView)v.findViewById(R.id.list_view);
-        ContactAdapter adapter = new ContactAdapter(getActivity(),R.layout.mixed_list,contactList);
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        listView.invalidateViews();
-    }
-
 }
